@@ -31,7 +31,7 @@ def iter_links(config_file):
     :yields: the tuples (container-source_name (str), link-destination (str))
     """
     for container_name, config in config_file.config.iteritems():
-        if 'links' in config.keys():
+        if isinstance(config, dict) and 'links' in config.keys():
             for link in config['links']:
                 yield container_name, link
 
